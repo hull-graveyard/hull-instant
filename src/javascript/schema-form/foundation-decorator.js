@@ -1,6 +1,6 @@
 require('./foundation-decorator-datepicker');
 angular.module('schemaForm').config(['schemaFormDecoratorsProvider', function(decoratorsProvider) {
-  var base = 'templates/directives/decorators/foundation/';
+  var base = 'templates/schema-form/directives/decorators/foundation/';
 
   decoratorsProvider.createDecorator('foundationDecorator', {
     textarea: base + 'textarea.html',
