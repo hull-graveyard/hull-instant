@@ -10,12 +10,5 @@ $error:red !default;
 $disabled: transparentize($main, .5);
 $primary-gradient: $primary radial-gradient(circle at 0 0, $secondary 0%, $primary 100%);
 
-$logo_image: '/assets/images/demo/logo.png';
-$brand_image: '/assets/images/demo/brand.png';
-$header_image: '/assets/images/demo/header.png';
-$body_image: '/assets/images/demo/bg.png';
-
 $font-code  : '' !default;
 $font-name  : '' !default;
-// $font-code  : 'Montserrat';
-// $font-name  : 'Montserrat';

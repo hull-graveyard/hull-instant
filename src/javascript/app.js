@@ -70,7 +70,7 @@ var app = angular.module('hull-instant', ['ngAnimate', 'schemaForm'])
 
 .controller('InstantWinController',['$scope', '$instant',
   function InstantWinController($scope, $instant) {
-
+    $scope.styles   = {};
     $scope.login    = Hull.login;
     $scope.logout   = Hull.logout;
     $scope.play     = $instant.play;
@@ -79,9 +79,26 @@ var app = angular.module('hull-instant', ['ngAnimate', 'schemaForm'])
     $scope.$instant = $instant;
     $scope.instant  = $instant.getState();
 
+    function setStyles(settings) {
+      var styles = {};
+      angular.forEach(settings.images, function(img, target) {
+        if (img) {
+          styles[target] = styles[target] || {};
+          styles[target].backgroundImage = 'url(' + settings.images.brand + ')';
+        }
+      });
+      $scope.styles = styles;
+      console.warn('Styles: ', $scope.styles);
+    }
+
+    setStyles($scope.instant.settings);
+
+
     function onChange(instant) {
+      console.warn('Change !', instant);
       $scope.$apply(function() {
         $scope.instant = instant;
+        setStyles(instant.settings);
       });
     }
 

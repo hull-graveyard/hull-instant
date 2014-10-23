@@ -1,14 +1,13 @@
-.ship-top-bar{
+.ship-top-bar {
   background-color: transparentize($overlay,.2);
   a{
     color:$main;
   }
 }
-.ship-brand{
+.ship-brand {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 72px 40px;
-  background-image:url($brand_image)
 }
 .ship-brand.ship-brand.ship-brand{
   color:transparentize($main,1);

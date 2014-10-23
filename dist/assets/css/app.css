@@ -71,8 +71,7 @@ h1, h2, h3, h4, h5, h6, p, body, .sub-nav dt, .sub-nav dd, .sub-nav li, .tabs dd
 
 .ship-body {
   background-size: cover;
-  background-position: center center;
-  background-image: url('/assets/images/demo/bg.png'); }
+  background-position: center center; }
 
 .ship-container {
   min-height: 100%;
@@ -632,8 +631,7 @@ h1, h2, h3, h4, h5, h6, p, body, .sub-nav dt, .sub-nav dd, .sub-nav li, .tabs dd
 .ship-brand {
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 72px 40px;
-  background-image: url('/assets/images/demo/brand.png'); }
+  background-size: 72px 40px; }
 
 .ship-brand.ship-brand.ship-brand {
   color: rgba(255, 255, 255, 0); }
@@ -644,8 +642,7 @@ h1, h2, h3, h4, h5, h6, p, body, .sub-nav dt, .sub-nav dd, .sub-nav li, .tabs dd
   background-size: cover;
   background-position: center center;
   position: relative;
-  padding-top: 150px;
-  background-image: url('/assets/images/demo/header.png'); }
+  padding-top: 150px; }
   @media screen and (min-width: 320px) {
     .ship-header {
       padding-top: 200px; } }

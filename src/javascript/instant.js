@@ -212,7 +212,16 @@ function InstantWin(CurrentUser, Ship) {
     initState(CurrentUser, Ship);
   }
 
+  window.addEventListener("message", function(e) {
+    var message = e.data;
+    if (message && message.event === "ship.update") {
+      updateSettings(message.ship.settings);
+      updateTranslations(message.ship.translations || {});
+    }
+  }, false);
+
 };
+
 
 
 InstantWin.Steps = Steps;

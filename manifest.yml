@@ -2,37 +2,6 @@ name: instant
 version: 0.1.0
 description: A Wonderful instant win and signup experience for your users
 settings:
-  - name: delay
-    type: integer
-    title: Delay
-    description: Delay before the result is displayed
-    default: 0
-    required: true
-  - title: Colors
-    name: colors
-    type: object
-    required: true
-    default:
-      main: "#ffffff"
-      primary: "#5C28A7"
-      secondary: "#0CAD90"
-    properties:
-      main:
-        title: Main color used for text
-        type: string
-        format: color
-        default: "#ffffff"
-      primary:
-        title: Primary color
-        type: string
-        format: color
-        default: "#5C28A7"
-      secondary:
-        title: secondary color
-        type: string
-        format: color
-        default: "#0CAD90"
-    additionalProperties: false
   - name: images
     title: Images
     description: Change your images here !
@@ -43,11 +12,6 @@ settings:
       header: "/assets/images/demo/header.png"
       background: "/assets/images/demo/bg.png"
     properties:
-      logo:
-        title: Logo
-        description: Dimensions must be 207px x 76px
-        type: string
-        format: uri
       brand:
         title: Brand image
         description: Dimensions must be 72px x 40px
@@ -92,8 +56,6 @@ settings:
     - name: A Link here 1
       url: "/"
     - name: A Link here 2
-      url: "/"
-    - name: A Link here 3
       url: "/"
     items:
       type: object

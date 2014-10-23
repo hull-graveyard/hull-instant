@@ -16,7 +16,7 @@
     Hull.init({ appId: "{{ship.id}}", orgUrl: "http://{{org.domain}}" });
   </script>
 </head>
-<body ng-controller="InstantWinController" class='ship-body'>
+<body ng-controller="InstantWinController" class='ship-body' ng-style="styles.background">
   <div ng-cloak class='ship-container'>
     <div ng-if="instant.loading" class='ship-spinner-container'>
       <div class="spinner">
