@@ -4,7 +4,8 @@
   "description": "An InstantWin ship for hull.io",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "start": "node server/index.js",
+    "postinstall": "./node_modules/.bin/bower install && ./node_modules/.bin/gulp build"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
     "angular-schema-form": "hull/angular-schema-form#decorator-options",
     "browser-sync": "^1.5.8",
     "browserify": "^6.1.0",
+    "express": "^4.9.8",
     "flux": "^2.0.1",
     "gulp": "^3.8.9",
     "gulp-changed": "^1.0.0",
@@ -37,6 +39,7 @@
     "gulp-uglify": "^1.0.1",
     "gulp-util": "^3.0.1",
     "gulp-yaml": "^0.2.2",
+    "hogan.js": "^3.0.2",
     "objectpath": "^1.0.5",
     "pretty-hrtime": "^0.2.2",
     "require-dir": "^0.1.0",
