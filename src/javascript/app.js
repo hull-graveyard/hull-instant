@@ -32,7 +32,7 @@ var app = angular.module('hull-instant', ['ngAnimate', 'schemaForm'])
   return {
     restrict: "A",
     scope: { step: "=", steps: "=", stepIndex: "=" },
-    templateUrl: "templates/hull-instant/directives/progress.html",
+    templateUrl: "directives/progress.html",
     controller: function($scope) {
       $scope.progressRate = function() {
         return 100 * ($scope.stepIndex + 1) / ($scope.steps.length + 1);

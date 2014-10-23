@@ -31,12 +31,10 @@ module.exports = {
   templates: {
     dest: dest + "/assets/js/",
     schemaForm: {
-      src: src + "/templates/schemaForm/**/*.html",
-      root: 'templates/schemaForm/'
+      src: src + "/templates/schemaForm/**/*.html"
     },
     hullInstant: {
-      src: src + "/templates/hull-instant/**/*.html",
-      root: "templates/hull-intant/"
+      src: src + "/templates/hull-instant/**/*.html"
     }
   },
   components: {

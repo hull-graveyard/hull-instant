@@ -14,12 +14,12 @@ gulp.task('templates', function() {
   var schemaFormTemplates = gulp.src(config.schemaForm.src)
     .pipe(plumber())
     .pipe(minifyhtml(minifyhtmlOptions))
-    .pipe(templateCache({module: 'schemaForm', root: config.schemaForm.root }))
+    .pipe(templateCache({ module: 'schemaForm' }))
 
   var appTemplates = gulp.src(config.hullInstant.src)
     .pipe(plumber())
     .pipe(minifyhtml(minifyhtmlOptions))
-    .pipe(templateCache({module: 'hull-instant', root: config.hullInstant.root }))
+    .pipe(templateCache({ module: 'hull-instant' }))
 
   var ret = stream
     .queue(schemaFormTemplates)
