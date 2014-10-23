@@ -7,7 +7,6 @@ settings:
     description: Change your images here !
     type: object
     default:
-      logo: "/assets/images/demo/logo.png"
       brand: "/assets/images/demo/brand.png"
       header: "/assets/images/demo/header.png"
       background: "/assets/images/demo/bg.png"
