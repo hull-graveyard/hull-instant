@@ -43,6 +43,7 @@ function InstantWin(CurrentUser, Ship) {
 
   // User actions
 
+
   function submitForm(formData) {
     emitChange({ changed: 'loading', loading: 'form' });
     Hull.api.put(AppState.form.id + "/submit", { data: formData }).then(function(form) {
@@ -135,18 +136,21 @@ function InstantWin(CurrentUser, Ship) {
   function isFormComplete() {
     if (!AppState.user) return false;
     var fields = AppState.form && AppState.form.fields_list;
-    var ret = fields && fields.reduce(function(res, field) {
+    var ret = AppState.form.user_data.created_at && fields && fields.reduce(function(res, field) {
       return res && !!field.value;
     }, true);
     return ret || false;
   }
 
-  function resetBadge() {
+  function reset() {
     if (AppState.user.is_admin) {
       if (AppState.badge && AppState.badge.id) {
         Hull.api(AppState.badge.id, 'delete', function() {
           AppState.badge = null;
-          emitChange({ changed: 'badge' });
+          Hull.api(AppState.form.id + '/submit', 'delete', function(form) {
+            AppState.form = form;
+            emitChange({ changed: 'reset' });
+          });
         }, function(err) {
           console.warn("Error: ", err);
         });
@@ -199,7 +203,7 @@ function InstantWin(CurrentUser, Ship) {
   };
 
   this.play         = play;
-  this.resetBadge   = resetBadge;
+  this.reset        = reset;
   this.submitForm   = submitForm;
 
   if (Ship) {
