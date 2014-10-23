@@ -84,7 +84,7 @@ var app = angular.module('hull-instant', ['ngAnimate', 'schemaForm'])
       angular.forEach(settings.images, function(img, target) {
         if (img) {
           styles[target] = styles[target] || {};
-          styles[target].backgroundImage = 'url(' + settings.images.brand + ')';
+          styles[target].backgroundImage = 'url(' + img + ')';
         }
       });
       $scope.styles = styles;
