@@ -144,6 +144,7 @@ function InstantWin(CurrentUser, Ship) {
 
   function reset() {
     if (AppState.user.is_admin) {
+      emitChange({ loading: 'reset' });
       if (AppState.badge && AppState.badge.id) {
         Hull.api(AppState.badge.id, 'delete', function() {
           AppState.badge = null;
@@ -155,6 +156,7 @@ function InstantWin(CurrentUser, Ship) {
           console.warn("Error: ", err);
         });
       } else {
+        emitChange({ changed: 'reset' });
         throw "[InstantWin] No badge found here...";
       }
     } else {
