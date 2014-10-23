@@ -1,0 +1,50 @@
+{
+  "name": "hull-instant-win",
+  "version": "0.1.0",
+  "description": "An InstantWin ship for hull.io",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hull-ships/instant-win.git"
+  },
+  "keywords": [
+    "hull",
+    "ship",
+    "game"
+  ],
+  "author": "Stephane Bellity <stephane@hull.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hull-ships/instant-win/issues"
+  },
+  "homepage": "https://github.com/hull-ships/instant-win",
+  "dependencies": {
+    "angular-schema-form": "hull/angular-schema-form#decorator-options",
+    "browser-sync": "^1.5.8",
+    "browserify": "^6.1.0",
+    "flux": "^2.0.1",
+    "gulp": "^3.8.9",
+    "gulp-changed": "^1.0.0",
+    "gulp-copy": "0.0.2",
+    "gulp-imagemin": "^1.2.1",
+    "gulp-liquid": "^0.1.0",
+    "gulp-notify": "^2.0.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-sass": "^1.2.0",
+    "gulp-uglify": "^1.0.1",
+    "gulp-util": "^3.0.1",
+    "gulp-yaml": "^0.2.2",
+    "objectpath": "^1.0.5",
+    "pretty-hrtime": "^0.2.2",
+    "require-dir": "^0.1.0",
+    "tv4": "^1.1.4",
+    "underscore": "^1.7.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.0.0",
+    "watchify": "^2.0.0",
+    "yamljs": "^0.2.0"
+  }
+}

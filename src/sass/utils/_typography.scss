@@ -1,0 +1,33 @@
+$font-family: "Helvetica Neue",Helvetica, Arial, sans-serif;
+@if($font-code!=''){
+  $family : unquote($font-code);
+  @import url(http://fonts.googleapis.com/css?family=#{$family});
+  $font-family: $font-name, "Helvetica Neue",Helvetica, Arial, sans-serif;
+}
+a, input, select{
+  outline:none;
+}
+body {
+  font:16px/1.5;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+body, p{
+  color:$main;
+}
+
+// Override all Foundation fonts
+h1, h2, h3, h4, h5, h6, p, body,
+.sub-nav dt, .sub-nav dd, .sub-nav li,
+.tabs dd > a, .tabs .tab-title > a,
+.top-bar-section ul li > a,
+.accordion .accordion-navigation > a, .accordion dd > a,
+button, .button,
+.label,
+.pricing-table .title,
+.pricing-table .price,
+.side-nav,
+.side-nav li.active > a:first-child:not(.button){
+  font-family: $font-family;
+}

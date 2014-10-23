@@ -1,0 +1,39 @@
+.ship-header{
+  height: 0;
+  overflow: visible;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  padding-top:150px;
+  background-image: url($header_image);
+  @media screen and (min-width: 320px){
+    padding-top:200px;
+  }
+  @media screen and (min-width: 1024px){
+    padding-top:300px;
+  }
+}
+
+.ship-header-content{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  &:before{
+    content: ' ';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(to bottom, transparentize($overlay,1) 33%, transparentize($overlay,.8) 66%, transparentize($overlay,.6) 100%);
+  }
+}
+
+.ship-header-title{
+  color:$main;
+}
+.ship-header-description{
+  color:transparentize($main,.5);
+}
