@@ -29,8 +29,15 @@ module.exports = {
     dest: dest
   },
   templates: {
-    src: src + "/templates/**/*.html",
-    dest: dest + "/templates"
+    dest: dest + "/assets/js/",
+    schemaForm: {
+      src: src + "/templates/schemaForm/**/*.html",
+      root: 'templates/schemaForm/'
+    },
+    hullInstant: {
+      src: src + "/templates/hull-instant/**/*.html",
+      root: "templates/hull-intant/"
+    }
   },
   components: {
     src: src + "/aura_components/**",

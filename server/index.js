@@ -7,8 +7,10 @@ app = express();
 app.set('views', './src');
 app.engine('html', cons.hogan);
 
+var baseUrl = "/";
+
 ['assets', 'templates', 'locales', 'index.liquid.html', 'manifest.json'].map(function(path) {
-  app.use("/" + path, express.static('./dist/' + path, {
+  app.use(baseUrl + path, express.static('./dist/' + path, {
     index: false,
     dotfiles: 'ignore',
     redirect: false
@@ -16,7 +18,10 @@ app.engine('html', cons.hogan);
 });
 
 var env = {
-  ship: { id: process.env.HULL_APP_ID },
+  ship: {
+    id: process.env.HULL_APP_ID,
+    source_url: baseUrl
+  },
   org: {
     namespace: process.env.HULL_ORG_NAMESPACE,
     domain: process.env.HULL_ORG_DOMAIN
@@ -27,8 +32,8 @@ function index(req, res) {
   res.render('index.html', env);
 }
 
-app.get('/', index);
-app.get('/index.html', index);
+app.get(baseUrl, index);
+app.get(baseUrl + 'index.html', index);
 
 
 var port = process.env.PORT || 5000;

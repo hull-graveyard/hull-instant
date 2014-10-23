@@ -1,9 +1,32 @@
-var gulp        = require('gulp');
-var config      = require('../config').templates;
+var gulp          = require('gulp'),
+    config        = require('../config').templates,
+    streamqueue   = require("streamqueue"),
+    templateCache = require("gulp-angular-templatecache"),
+    minifyhtml    = require("gulp-minify-html"),
+    concat        = require("gulp-concat"),
+    plumber       = require("gulp-plumber");
 
-console.warn('Templates config: ', config);
+var minifyhtmlOptions = { empty: true, spare: true, quotes: true };
 
 gulp.task('templates', function() {
-  return gulp.src(config.src)
-    .pipe(gulp.dest(config.dest));
+  var stream = streamqueue({ objectMode: true });
+
+  var schemaFormTemplates = gulp.src(config.schemaForm.src)
+    .pipe(plumber())
+    .pipe(minifyhtml(minifyhtmlOptions))
+    .pipe(templateCache({module: 'schemaForm', root: config.schemaForm.root }))
+
+  var appTemplates = gulp.src(config.hullInstant.src)
+    .pipe(plumber())
+    .pipe(minifyhtml(minifyhtmlOptions))
+    .pipe(templateCache({module: 'hull-instant', root: config.hullInstant.root }))
+
+  var ret = stream
+    .queue(schemaFormTemplates)
+    .queue(appTemplates)
+    .done();
+
+
+  ret.pipe(concat("templates.js")).pipe(gulp.dest(config.dest));
+
 });

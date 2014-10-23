@@ -7,10 +7,11 @@
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-animate.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-sanitize.min.js"></script>
-  <script src="{{ship.source_url}}/assets/js/app.js"></script>
+  <script src="{{ship.source_url}}assets/js/app.js"></script>
+  <script src="{{ship.source_url}}assets/js/templates.js"></script>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.5/css/normalize.css">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.5/css/foundation.min.css">
-  <link rel="stylesheet" href="{{ship.source_url}}/assets/css/app.css" id="app-css">
+  <link rel="stylesheet" href="{{ship.source_url}}assets/css/app.css" id="app-css">
   <script>
     Hull.init({ appId: "{{ship.id}}", orgUrl: "http://{{org.domain}}" });
   </script>
@@ -25,9 +26,9 @@
       </div>
     </div>
     <div>
-      <div class="row" ng-include="'templates/header.html'"></div>
-      <div class="row" ng-include="'templates/body.html'"></div>
-      <div class="row" ng-include="'templates/footer.html'"></div>
+      <div class="row" ng-include="'templates/hull-instant/header.html'"></div>
+      <div class="row" ng-include="'templates/hull-instant/body.html'"></div>
+      <div class="row" ng-include="'templates/hull-instant/footer.html'"></div>
     </div>
   </div>
 </body>
