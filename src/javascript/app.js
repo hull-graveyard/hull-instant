@@ -58,7 +58,6 @@ var app = angular.module('hull-instant', ['ngAnimate', 'schemaForm'])
   ];
 
   $scope.onSubmit = function(form) {
-    debugger
     // First we broadcast an event so all fields validate themselves
     $scope.$broadcast('schemaFormValidate');
 
