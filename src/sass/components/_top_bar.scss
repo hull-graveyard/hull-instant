@@ -1,13 +1,14 @@
 .ship-top-bar {
   background-color: transparentize($overlay,.2);
-  a{
+  a {
     color:$main;
   }
 }
 .ship-brand {
+  min-width: 100px;
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 72px 40px;
+  background-size: cover;
 }
 .ship-brand.ship-brand.ship-brand{
   color:transparentize($main,1);

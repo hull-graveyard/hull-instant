@@ -44,6 +44,20 @@ var app = angular.module('hull-instant', ['ngAnimate', 'schemaForm', 'angular-da
   };
 }])
 
+.factory('$hullConfig', ['$hullInit', function($hullInit) {
+
+  function getAuthServices() {
+    var auth = Hull.config('services').auth || {};
+    return Object.keys(auth).filter(function(s) { return s !== 'hull'; });
+  }
+
+  return {
+    getAuthServices: getAuthServices
+  };
+
+}])
+
+
 .directive("progress", function(){
   return {
     restrict: "A",
@@ -63,6 +77,12 @@ var app = angular.module('hull-instant', ['ngAnimate', 'schemaForm', 'angular-da
     scope: { spinning: "=" },
     templateUrl: "directives/spinner.html"
   };
+})
+
+.filter('capitalize', function() {
+  return function(input, all) {
+    return (!!input) ? input.replace(/([^\W_]+[^\s-]*) */g, function(txt){ return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); }) : '';
+  }
 })
 
 .controller('FormController', ['$scope', '$instant', function($scope) {
@@ -92,16 +112,17 @@ var app = angular.module('hull-instant', ['ngAnimate', 'schemaForm', 'angular-da
   }
 }])
 
-.controller('InstantWinController',['$scope', '$instant', '$translate',
-  function InstantWinController($scope, $instant, $translate) {
+.controller('InstantWinController',['$scope', '$instant', '$translate', '$hullConfig',
+  function InstantWinController($scope, $instant, $translate, $hullConfig) {
     $scope.styles   = {};
     $scope.login    = Hull.login;
     $scope.logout   = Hull.logout;
     $scope.play     = $instant.play;
 
     $scope.steps = Steps;
-    $scope.$instant = $instant;
-    $scope.instant  = $instant.getState();
+    $scope.$instant       = $instant;
+    $scope.instant        = $instant.getState();
+    $scope.authServices   = $hullConfig.getAuthServices();
 
     function setStyles(settings) {
       var styles = {};

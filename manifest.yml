@@ -6,10 +6,6 @@ settings:
     title: Images
     description: Change your images here !
     type: object
-    default:
-      brand: "/assets/images/demo/brand.png"
-      header: "/assets/images/demo/header.png"
-      background: "/assets/images/demo/bg.png"
     properties:
       brand:
         title: Brand image

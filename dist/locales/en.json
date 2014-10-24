@@ -1,11 +1,13 @@
 {
-  "Brand Name": "Brand Name",
-  "Log In with Facebook": "Log In with Facebook",
+  "Form": "Form",
+  "Log out": "Log out",
   "Logging in": "Logging in",
-  "Login with Facebook": "Login with Facebook",
+  "Login with": "Login with",
   "Look for the Facebook login popup and click accept": "Look for the Facebook login popup and click accept",
   "PLAY NOW": "PLAY NOW",
+  "Play": "Play",
   "Please fill this form": "Please fill this form",
+  "Result": "Result",
   "WAITING FOR LOGIN TO COMPLETE": "WAITING FOR LOGIN TO COMPLETE",
   "You lose, come back tomorrow": "You lose, come back tomorrow"
 }
