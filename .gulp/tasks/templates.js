@@ -8,7 +8,7 @@ var gulp          = require('gulp'),
 
 var minifyhtmlOptions = { empty: true, spare: true, quotes: true };
 
-gulp.task('templates', function() {
+gulp.task('templates', ['translate'], function() {
   var stream = streamqueue({ objectMode: true });
 
   var schemaFormTemplates = gulp.src(config.schemaForm.src)

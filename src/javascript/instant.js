@@ -40,17 +40,35 @@ function InstantWin(CurrentUser, Ship) {
     emitChange({ changed: 'translations' });
   }
 
-
   // User actions
 
+  function processFormData(formData) {
+    var fields = AppState.form.fields_list;
+    var ret = fields.reduce(function(data, field) {
+      var val = formData[field.name];
+      if (val.toString().length > 0) {
+        switch (field.field_type) {
+          case 'date':
+            res = new Date(val).toISOString().substring(0,10);
+            break;
+          default:
+            res = formData[field.name];
+        }
+        data[field.name] = res;
+      }
+      return data;
+    }, {});
+    return ret;
+  }
 
   function submitForm(formData) {
+    var data = processFormData(formData);
     emitChange({ changed: 'loading', loading: 'form' });
-    Hull.api.put(AppState.form.id + "/submit", { data: formData }).then(function(form) {
+    Hull.api.put(AppState.form.id + "/submit", { data: data }).then(function(form) {
       AppState.form = form;
       emitChange({ changed: 'form' });
     }, function(err) {
-      console.warn('Error', err);
+      emitChange({ error_message: 'invalid_form', error: err });
     });
   }
 
@@ -61,12 +79,12 @@ function InstantWin(CurrentUser, Ship) {
         AppState.badge = badge;
         emitChange({ changed: 'badge' });
       }, function(err) {
-        console.warn('Error: ', err);
+        emitChange({ error_message: 'error_on_achieve', error: err });
       });
     } else if (provider && !AppState.user) {
       loginAndPlay(provider);
     } else {
-      console.warn("User cannot play", canPlay());
+      emitChange({ error_message: 'user_cannot_play' });
     }
   }
 
@@ -164,6 +182,19 @@ function InstantWin(CurrentUser, Ship) {
     }
   }
 
+  function translate(lang) {
+    var ret = AppState.translations[lang] || AppState.translations['en'] || {};
+    var result = Object.keys(ret).reduce(function(tr, k) {
+      var t = ret[k];
+      if (t && t.length > 0) {
+        tr[k] = t;
+      }
+      return tr;
+    }, {});
+    console.warn("translations: ", lang, result);
+    return result;
+  }
+
   function onAuthEvent() {
     emitChange({ changed: 'loading', loading: 'ship' });
     Hull.api(Ship.id, { fields: 'badge' }).then(function(ship) {
@@ -171,11 +202,13 @@ function InstantWin(CurrentUser, Ship) {
       if (autoPlay && userCanPlay()) play();
       autoPlay = false;
     }, function(err) {
+      emitChange({ error_message: 'ship_not_found', error: err });
     });
   }
 
   Hull.on('hull.auth.login',  onAuthEvent);
   Hull.on('hull.auth.logout', onAuthEvent);
+  Hull.on('hull.auth.fail', onAuthEvent);
 
   var _listeners = [];
 
@@ -195,6 +228,7 @@ function InstantWin(CurrentUser, Ship) {
   this.teardown = function() {
     Hull.off('hull.auth.login',  onAuthEvent);
     Hull.off('hull.auth.logout', onAuthEvent);
+    Hull.off('hull.auth.fail', onAuthEvent);
     for (var l=0; l < _listeners.length; l++) {
       Hull.off(CHANGE_EVENT, listeners[l]);
     }
@@ -207,6 +241,7 @@ function InstantWin(CurrentUser, Ship) {
   this.play         = play;
   this.reset        = reset;
   this.submitForm   = submitForm;
+  this.translate    = translate;
 
   if (Ship) {
     initState(CurrentUser, Ship);

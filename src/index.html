@@ -18,17 +18,11 @@
 </head>
 <body ng-controller="InstantWinController" class='ship-body' ng-style="styles.background">
   <div ng-cloak class='ship-container'>
-    <div ng-if="instant.loading" class='ship-spinner-container'>
-      <div class="spinner">
-        <div class="bounce1"></div>
-        <div class="bounce2"></div>
-        <div class="bounce3"></div>
-      </div>
-    </div>
+    <spinner spinning="instant.loading"></spinner>
     <div>
-      <div class="row" ng-include="'header.html'"></div>
-      <div class="row" ng-include="'body.html'"></div>
-      <div class="row" ng-include="'footer.html'"></div>
+      <div ng-include="'header.html'"></div>
+      <div ng-include="'body.html'"></div>
+      <div ng-include="'footer.html'"></div>
     </div>
   </div>
 </body>

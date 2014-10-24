@@ -17,7 +17,7 @@ module.exports = {
     port: (process.env.PORT || 3000)
   },
   sass: {
-    src: src + "/sass/*.scss",
+    src: src + "/sass/**/*.scss",
     dest: dest + "/assets/css/"
   },
   images: {
@@ -37,9 +37,9 @@ module.exports = {
       src: src + "/templates/hull-instant/**/*.html"
     }
   },
-  components: {
-    src: src + "/aura_components/**",
-    dest: dest + "/aura_components"
+  translate: {
+    src: src + '/**/*.html',
+    dest: dest + '/locales'
   },
   browserify: {
     // Enable source maps

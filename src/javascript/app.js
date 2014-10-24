@@ -19,13 +19,29 @@ try {
 require('angular-schema-form/dist/schema-form');
 require('./schema-form/foundation-decorator');
 require('./schema-form/foundation-decorator-datepicker');
+require('angular-datepicker/build/angular-datepicker');
+require('angular-translate');
 
-var app = angular.module('hull-instant', ['ngAnimate', 'schemaForm'])
+var app = angular.module('hull-instant', ['ngAnimate', 'schemaForm', 'angular-datepicker', 'pascalprecht.translate'])
+
+.config(["$translateProvider", function ($translateProvider) {
+  $translateProvider.useLoader("$translateShipLoader");
+  $translateProvider.preferredLanguage("en");
+}])
+
 
 .factory("$instant", ["$hullInit", function($hullInit) {
   var instant = new InstantWin($hullInit.user, $hullInit.ship);
   window.$instant = instant;
   return instant;
+}])
+
+.factory("$translateShipLoader", ["$q", "$instant", function ($q, $instant) {
+  return function (options) {
+    var deferred = $q.defer();
+    deferred.resolve($instant.translate(options.key));
+    return deferred.promise;
+  };
 }])
 
 .directive("progress", function(){
@@ -38,6 +54,14 @@ var app = angular.module('hull-instant', ['ngAnimate', 'schemaForm'])
         return 100 * ($scope.stepIndex + 1) / ($scope.steps.length + 1);
       }
     }
+  };
+})
+
+.directive("spinner", function(){
+  return {
+    restrict: "EA",
+    scope: { spinning: "=" },
+    templateUrl: "directives/spinner.html"
   };
 })
 
@@ -54,7 +78,7 @@ var app = angular.module('hull-instant', ['ngAnimate', 'schemaForm'])
       "title" : "Form",
       "items" : [ "*" ],
     },
-    { "type": "submit", "title": "Save", "style":"" }
+    { "type": "submit", "title": "Save" }
   ];
 
   $scope.onSubmit = function(form) {
@@ -68,8 +92,8 @@ var app = angular.module('hull-instant', ['ngAnimate', 'schemaForm'])
   }
 }])
 
-.controller('InstantWinController',['$scope', '$instant',
-  function InstantWinController($scope, $instant) {
+.controller('InstantWinController',['$scope', '$instant', '$translate',
+  function InstantWinController($scope, $instant, $translate) {
     $scope.styles   = {};
     $scope.login    = Hull.login;
     $scope.logout   = Hull.logout;
@@ -88,17 +112,16 @@ var app = angular.module('hull-instant', ['ngAnimate', 'schemaForm'])
         }
       });
       $scope.styles = styles;
-      console.warn('Styles: ', $scope.styles);
     }
 
     setStyles($scope.instant.settings);
 
 
     function onChange(instant) {
-      console.warn('Change !', instant);
       $scope.$apply(function() {
         $scope.instant = instant;
         setStyles(instant.settings);
+        $translate.refresh();
       });
     }
 
@@ -113,7 +136,6 @@ Hull.ready(function(_, currentUser, ship, org) {
     ship: ship,
     org: org
   };
-
   app.value('$hullInit', HullInit);
   angular.bootstrap(document, ['hull-instant']);
 });

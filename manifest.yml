@@ -15,17 +15,17 @@ settings:
         title: Brand image
         description: Dimensions must be 72px x 40px
         type: string
-        format: uri
+        format: image
       header:
         title: Header image
         description: Dimensions must be 810px x 230px
         type: string
-        format: uri
+        format: image
       background:
         title: Background image
         description: Dimensions must be 810px x 668px
         type: string
-        format: uri
+        format: image
     additionalProperties: false
   - name: social_links
     title: Social Links

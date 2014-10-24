@@ -3,10 +3,13 @@ var sass = require('gulp-sass');
 var handleErrors = require('../util/handleErrors');
 var config=require('../config').sass;
 
+var browserSync = require('browser-sync');
+var reload      = browserSync.reload;
+
 gulp.task('sass', ['images'], function () {
-  console.warn('Sass: ', config);
   return gulp.src(config.src)
-    .pipe(sass({ style: 'expanded' }))
+    .pipe(sass())
     .on('error', handleErrors)
-    .pipe(gulp.dest(config.dest));
+    .pipe(gulp.dest(config.dest))
+    .pipe(reload({ stream: true }));
 });
