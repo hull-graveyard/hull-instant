@@ -162,7 +162,7 @@ Hull.ready(function(_, currentUser, ship, org) {
   angular.bootstrap(document, ['hull-instant']);
 });
 
-},{"./instant":"/Users/sbellity/code/h/instant-win/src/javascript/instant.js","./schema-form/foundation-decorator":"/Users/sbellity/code/h/instant-win/src/javascript/schema-form/foundation-decorator.js","./schema-form/foundation-decorator-datepicker":"/Users/sbellity/code/h/instant-win/src/javascript/schema-form/foundation-decorator-datepicker.js","angular-datepicker/build/angular-datepicker":"/Users/sbellity/code/h/instant-win/node_modules/angular-datepicker/build/angular-datepicker.js","angular-schema-form/dist/schema-form":"/Users/sbellity/code/h/instant-win/node_modules/angular-schema-form/dist/schema-form.js","angular-translate":"/Users/sbellity/code/h/instant-win/node_modules/angular-translate/dist/angular-translate.js","objectpath":"/Users/sbellity/code/h/instant-win/node_modules/objectpath/index.js","tv4":"/Users/sbellity/code/h/instant-win/node_modules/tv4/tv4.js"}],"/Users/sbellity/code/h/instant-win/node_modules/angular-datepicker/build/angular-datepicker.js":[function(require,module,exports){
+},{"./instant":"/Users/sbellity/code/h/ships/instant/src/javascript/instant.js","./schema-form/foundation-decorator":"/Users/sbellity/code/h/ships/instant/src/javascript/schema-form/foundation-decorator.js","./schema-form/foundation-decorator-datepicker":"/Users/sbellity/code/h/ships/instant/src/javascript/schema-form/foundation-decorator-datepicker.js","angular-datepicker/build/angular-datepicker":"/Users/sbellity/code/h/ships/instant/node_modules/angular-datepicker/build/angular-datepicker.js","angular-schema-form/dist/schema-form":"/Users/sbellity/code/h/ships/instant/node_modules/angular-schema-form/dist/schema-form.js","angular-translate":"/Users/sbellity/code/h/ships/instant/node_modules/angular-translate/dist/angular-translate.js","objectpath":"/Users/sbellity/code/h/ships/instant/node_modules/objectpath/index.js","tv4":"/Users/sbellity/code/h/ships/instant/node_modules/tv4/tv4.js"}],"/Users/sbellity/code/h/ships/instant/node_modules/angular-datepicker/build/angular-datepicker.js":[function(require,module,exports){
 /*!
  * pickadate.js v3.4.0, 2014/02/15
  * By Amsul, http://amsul.ca
@@ -191,7 +191,7 @@ Hull.ready(function(_, currentUser, ship, org) {
  */
 var nativeSplit=String.prototype.split,compliantExecNpcg=void 0===/()??/.exec("")[1];String.prototype.split=function(a,b){var c=this;if("[object RegExp]"!==Object.prototype.toString.call(a))return nativeSplit.call(c,a,b);var d,e,f,g,h=[],i=(a.ignoreCase?"i":"")+(a.multiline?"m":"")+(a.extended?"x":"")+(a.sticky?"y":""),j=0;for(a=new RegExp(a.source,i+"g"),c+="",compliantExecNpcg||(d=new RegExp("^"+a.source+"$(?!\\s)",i)),b=void 0===b?-1>>>0:b>>>0;(e=a.exec(c))&&(f=e.index+e[0].length,!(f>j&&(h.push(c.slice(j,e.index)),!compliantExecNpcg&&e.length>1&&e[0].replace(d,function(){for(var a=1;a<arguments.length-2;a++)void 0===arguments[a]&&(e[a]=void 0)}),e.length>1&&e.index<c.length&&Array.prototype.push.apply(h,e.slice(1)),g=e[0].length,j=f,h.length>=b)));)a.lastIndex===e.index&&a.lastIndex++;return j===c.length?(g||!a.test(""))&&h.push(""):h.push(c.slice(j)),h.length>b?h.slice(0,b):h};
 angular.module("angular-datepicker",[]).directive("pickADate",function(){return{restrict:"A",scope:{pickADate:"=",pickADateOptions:"="},link:function(a,b){function c(c){if("function"==typeof f&&f.apply(this,arguments),!a.$$phase&&!a.$root.$$phase){var d=b.pickadate("picker").get("select");a.$apply(function(){return c.hasOwnProperty("clear")?void(a.pickADate=null):(a.pickADate&&"string"!=typeof a.pickADate||(a.pickADate=new Date(0)),a.pickADate.setYear(d.obj.getYear()+1900),a.pickADate.setMonth(d.obj.getMonth()),void a.pickADate.setDate(d.obj.getDate()))})}}function d(){if("function"==typeof g&&g.apply(this,arguments),"undefined"!=typeof cordova&&cordova.plugins&&cordova.plugins.Keyboard){var a=function(){cordova.plugins.Keyboard.close(),window.removeEventListener("native.keyboardshow",this)};window.addEventListener("native.keyboardshow",a),setTimeout(function(){window.removeEventListener("native.keyboardshow",a)},500)}}var e=a.pickADateOptions||{},f=e.onSet,g=e.onClose;b.pickadate(angular.extend(e,{onSet:c,onClose:d,container:document.body})),setTimeout(function(){a.pickADate&&b.pickadate("picker").set("select",a.pickADate)},1e3)}}}).directive("pickATime",function(){return{restrict:"A",scope:{pickATime:"=",pickATimeOptions:"="},link:function(a,b){function c(c){if("function"==typeof f&&f.apply(this,arguments),!a.$$phase&&!a.$root.$$phase){var d=b.pickatime("picker").get("select");a.$apply(function(){return c.hasOwnProperty("clear")?void(a.pickATime=null):(a.pickATime&&"string"!=typeof a.pickATime||(a.pickATime=new Date),a.pickATime.setHours(d.hour),a.pickATime.setMinutes(d.mins),a.pickATime.setSeconds(0),void a.pickATime.setMilliseconds(0))})}}function d(){if("function"==typeof g&&g.apply(this,arguments),"undefined"!=typeof cordova&&cordova.plugins&&cordova.plugins.Keyboard){var a=function(){cordova.plugins.Keyboard.close(),window.removeEventListener("native.keyboardshow",this)};window.addEventListener("native.keyboardshow",a),setTimeout(function(){window.removeEventListener("native.keyboardshow",a)},500)}}var e=a.pickATimeOptions||{},f=e.onSet,g=e.onClose;b.pickatime(angular.extend(e,{onSet:c,onClose:d,container:document.body})),setTimeout(function(){a.pickATime&&b.pickatime("picker").set("select",a.pickATime)},1e3)}}});
-},{}],"/Users/sbellity/code/h/instant-win/node_modules/angular-schema-form/dist/schema-form.js":[function(require,module,exports){
+},{}],"/Users/sbellity/code/h/ships/instant/node_modules/angular-schema-form/dist/schema-form.js":[function(require,module,exports){
 // Deps is sort of a problem for us, maybe in the future we will ask the user to depend
 // on modules for add-ons
 
@@ -1607,7 +1607,7 @@ angular.module('schemaForm').directive('schemaValidate', ['sfValidator', functio
   };
 }]);
 
-},{}],"/Users/sbellity/code/h/instant-win/node_modules/angular-translate/dist/angular-translate.js":[function(require,module,exports){
+},{}],"/Users/sbellity/code/h/ships/instant/node_modules/angular-translate/dist/angular-translate.js":[function(require,module,exports){
 /*!
  * angular-translate - v2.4.2 - 2014-10-21
  * http://github.com/angular-translate/angular-translate
@@ -2568,10 +2568,10 @@ angular.module('pascalprecht.translate').filter('translate', [
     return translateFilter;
   }
 ]);
-},{}],"/Users/sbellity/code/h/instant-win/node_modules/objectpath/index.js":[function(require,module,exports){
+},{}],"/Users/sbellity/code/h/ships/instant/node_modules/objectpath/index.js":[function(require,module,exports){
 module.exports = require('./lib/ObjectPath.js').ObjectPath;
 
-},{"./lib/ObjectPath.js":"/Users/sbellity/code/h/instant-win/node_modules/objectpath/lib/ObjectPath.js"}],"/Users/sbellity/code/h/instant-win/node_modules/objectpath/lib/ObjectPath.js":[function(require,module,exports){
+},{"./lib/ObjectPath.js":"/Users/sbellity/code/h/ships/instant/node_modules/objectpath/lib/ObjectPath.js"}],"/Users/sbellity/code/h/ships/instant/node_modules/objectpath/lib/ObjectPath.js":[function(require,module,exports){
 'use strict';
 
 ;!function(undefined) {
@@ -2674,7 +2674,7 @@ module.exports = require('./lib/ObjectPath.js').ObjectPath;
 		window.ObjectPath = ObjectPath;
 	}
 }();
-},{}],"/Users/sbellity/code/h/instant-win/node_modules/tv4/tv4.js":[function(require,module,exports){
+},{}],"/Users/sbellity/code/h/ships/instant/node_modules/tv4/tv4.js":[function(require,module,exports){
 /*
 Author: Geraint Luff and others
 Year: 2013
@@ -4293,7 +4293,7 @@ tv4.tv4 = tv4;
 return tv4; // used by _header.js to globalise.
 
 }));
-},{}],"/Users/sbellity/code/h/instant-win/src/javascript/instant.js":[function(require,module,exports){
+},{}],"/Users/sbellity/code/h/ships/instant/src/javascript/instant.js":[function(require,module,exports){
 var _ = require('./util');
 
 var Steps = ['play', 'form', 'result'];
@@ -4559,7 +4559,7 @@ InstantWin.Steps = Steps;
 
 module.exports = InstantWin;
 
-},{"./util":"/Users/sbellity/code/h/instant-win/src/javascript/util.js"}],"/Users/sbellity/code/h/instant-win/src/javascript/schema-form/foundation-decorator-datepicker.js":[function(require,module,exports){
+},{"./util":"/Users/sbellity/code/h/ships/instant/src/javascript/util.js"}],"/Users/sbellity/code/h/ships/instant/src/javascript/schema-form/foundation-decorator-datepicker.js":[function(require,module,exports){
 angular.module('schemaForm').config(
 ['schemaFormProvider', 'schemaFormDecoratorsProvider', 'sfPathProvider',
   function(schemaFormProvider,  schemaFormDecoratorsProvider, sfPathProvider) {
@@ -4589,7 +4589,7 @@ angular.module('schemaForm').config(
   }
 ]);
 
-},{}],"/Users/sbellity/code/h/instant-win/src/javascript/schema-form/foundation-decorator.js":[function(require,module,exports){
+},{}],"/Users/sbellity/code/h/ships/instant/src/javascript/schema-form/foundation-decorator.js":[function(require,module,exports){
 require('./foundation-decorator-datepicker');
 angular.module('schemaForm').config(['schemaFormDecoratorsProvider', function(decoratorsProvider) {
   var base = 'directives/decorators/foundation/';
@@ -4654,7 +4654,7 @@ angular.module('schemaForm').config(['schemaFormDecoratorsProvider', function(de
   };
 });
 
-},{"./foundation-decorator-datepicker":"/Users/sbellity/code/h/instant-win/src/javascript/schema-form/foundation-decorator-datepicker.js"}],"/Users/sbellity/code/h/instant-win/src/javascript/util.js":[function(require,module,exports){
+},{"./foundation-decorator-datepicker":"/Users/sbellity/code/h/ships/instant/src/javascript/schema-form/foundation-decorator-datepicker.js"}],"/Users/sbellity/code/h/ships/instant/src/javascript/util.js":[function(require,module,exports){
 function isObject(obj) {
   var type = typeof obj;
   return type === 'function' || type === 'object' && !!obj;
