@@ -171,7 +171,7 @@ function InstantWin(CurrentUser, Ship) {
             emitChange({ changed: 'reset' });
           });
         }, function(err) {
-          console.warn("Error: ", err);
+          emitChange({ error_message: 'error_deleting_badge', error: err });
         });
       } else {
         emitChange({ changed: 'reset' });
@@ -191,7 +191,6 @@ function InstantWin(CurrentUser, Ship) {
       }
       return tr;
     }, {});
-    console.warn("translations: ", lang, result);
     return result;
   }
 
