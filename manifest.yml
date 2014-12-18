@@ -40,7 +40,7 @@ settings:
           type: string
         url:
           type: string
-          format: uri
+          format: url
       required:
       - name
       - url
@@ -60,7 +60,7 @@ settings:
           type: string
         url:
           type: string
-          format: uri
+          format: url
       required:
       - name
       - url
