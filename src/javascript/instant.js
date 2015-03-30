@@ -203,9 +203,10 @@ function InstantWin(CurrentUser, Ship) {
     });
   }
 
-  Hull.on('hull.auth.login',  onAuthEvent);
-  Hull.on('hull.auth.logout', onAuthEvent);
-  Hull.on('hull.auth.fail', onAuthEvent);
+  Hull.on('hull.user.update', onAuthEvent);
+  Hull.on('hull.user.login', onAuthEvent);
+  Hull.on('hull.user.logout', onAuthEvent);
+  Hull.on('hull.user.fail', onAuthEvent);
 
   var _listeners = [];
 
@@ -223,10 +224,11 @@ function InstantWin(CurrentUser, Ship) {
   };
 
   this.teardown = function() {
-    Hull.off('hull.auth.login',  onAuthEvent);
-    Hull.off('hull.auth.logout', onAuthEvent);
-    Hull.off('hull.auth.fail', onAuthEvent);
-    for (var l=0; l < _listeners.length; l++) {
+    Hull.off('hull.user.update', onAuthEvent);
+    Hull.off('hull.user.login', onAuthEvent);
+    Hull.off('hull.user.logout', onAuthEvent);
+    Hull.off('hull.user.fail', onAuthEvent);
+    for (var l = 0; l < _listeners.length; l++) {
       Hull.off(CHANGE_EVENT, listeners[l]);
     }
   };
@@ -251,10 +253,7 @@ function InstantWin(CurrentUser, Ship) {
       updateTranslations(message.ship.translations || {});
     }
   }, false);
-
 };
-
-
 
 InstantWin.Steps = Steps;
 
