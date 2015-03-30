@@ -237,10 +237,10 @@ function InstantWin(CurrentUser, Ship) {
     return getAppState();
   };
 
-  this.play         = play;
-  this.reset        = reset;
-  this.submitForm   = submitForm;
-  this.translate    = translate;
+  this.play = play;
+  this.reset = reset;
+  this.submitForm = submitForm;
+  this.translate = translate;
 
   if (Ship) {
     initState(CurrentUser, Ship);

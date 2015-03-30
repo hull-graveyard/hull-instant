@@ -1,21 +1,20 @@
 <div class="text-center mt-2 mb-2" ng-if="instant.user">
   <button translate class="button primary" ng-click="play()">
-    PLAY NOW
+    Play now
   </button>
 </div>
 
 <div class="text-center mt-2 mb-2" ng-if="!instant.user">
   <div ng-if="!instant.isLoggingIn">
     <button ng-repeat="service in authServices" class="button primary" ng-click="play(service)">
-      <span translate>Login with</span>
-      {{service | capitalize}}
+      <span translate>Login with</span> {{service | capitalize}}
     </button>
   </div>
   <div ng-if="instant.isLoggingIn">
     <h5 class="ship-login-title">
-      <strong translate>WAITING FOR LOGIN TO COMPLETE</strong>
+      <strong translate>Waiting for log in to complete</strong>
     </h5>
-    <p translate class="ship-login-message">Look for the Facebook login popup and click accept</p>
+    <p translate class="ship-login-message">Look for the log in popup and click accept</p>
     <button translate class="secondary button disabled">
       Logging in
     </button>
