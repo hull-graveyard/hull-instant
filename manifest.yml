@@ -1,8 +1,7 @@
-name: instant
+name: hull-instant
 version: 0.1.0
-description: A Wonderful instant win and signup experience for your users
-index: index.liquid.html
-fullpage: true
+description: A wonderful instant win and signup experience for your users
+index: index.html
 settings:
   - name: images
     title: Images
@@ -66,7 +65,7 @@ settings:
       - name
       - url
 resources:
-  - name: achievement
+  - name: instant_win
     type: instant_win
   - name: form
     type: form

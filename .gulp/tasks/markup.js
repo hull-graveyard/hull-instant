@@ -9,12 +9,6 @@ try {
   env = Yaml.load('env.yml');
 } catch(e) {}
 
-
 gulp.task('markup', function() {
-  gulp.src(config.src)
-    .pipe(rename({ suffix: ".liquid" }))
-    .pipe(gulp.dest(config.dest));
-  return env && gulp.src(config.src)
-    .pipe(liquid({ locals: env }))
-    .pipe(gulp.dest(config.dest));
+  return gulp.src(config.src).pipe(gulp.dest(config.dest));
 });

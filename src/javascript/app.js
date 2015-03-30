@@ -29,7 +29,6 @@ var app = angular.module('hull-instant', ['ngAnimate', 'schemaForm', 'angular-da
   $translateProvider.preferredLanguage("en");
 }])
 
-
 .factory("$instant", ["$hullInit", function($hullInit) {
   var instant = new InstantWin($hullInit.user, $hullInit.ship);
   window.$instant = instant;
@@ -45,7 +44,6 @@ var app = angular.module('hull-instant', ['ngAnimate', 'schemaForm', 'angular-da
 }])
 
 .factory('$hullConfig', ['$hullInit', function($hullInit) {
-
   function getAuthServices() {
     var auth = Hull.config('services').auth || {};
     return Object.keys(auth).filter(function(s) { return s !== 'hull'; });
@@ -54,9 +52,7 @@ var app = angular.module('hull-instant', ['ngAnimate', 'schemaForm', 'angular-da
   return {
     getAuthServices: getAuthServices
   };
-
 }])
-
 
 .directive("progress", function(){
   return {
@@ -114,15 +110,15 @@ var app = angular.module('hull-instant', ['ngAnimate', 'schemaForm', 'angular-da
 
 .controller('InstantWinController',['$scope', '$instant', '$translate', '$hullConfig',
   function InstantWinController($scope, $instant, $translate, $hullConfig) {
-    $scope.styles   = {};
-    $scope.login    = Hull.login;
-    $scope.logout   = Hull.logout;
-    $scope.play     = $instant.play;
+    $scope.styles = {};
+    $scope.login = Hull.login;
+    $scope.logout = Hull.logout;
+    $scope.play = $instant.play;
 
     $scope.steps = Steps;
-    $scope.$instant       = $instant;
-    $scope.instant        = $instant.getState();
-    $scope.authServices   = $hullConfig.getAuthServices();
+    $scope.$instant = $instant;
+    $scope.instant = $instant.getState();
+    $scope.authServices = $hullConfig.getAuthServices();
 
     function setStyles(settings) {
       var styles = {};
@@ -137,7 +133,6 @@ var app = angular.module('hull-instant', ['ngAnimate', 'schemaForm', 'angular-da
 
     setStyles($scope.instant.settings);
 
-
     function onChange(instant) {
       $scope.$apply(function() {
         $scope.instant = instant;
@@ -150,13 +145,12 @@ var app = angular.module('hull-instant', ['ngAnimate', 'schemaForm', 'angular-da
   }
 ]);
 
+Hull.onEmbed(document, function(element, deployment) {
+  app.value('$hullInit', {
+    user: Hull.currentUser(),
+    ship: deployment.ship
+  });
 
-Hull.ready(function(_, currentUser, ship, org) {
-  var HullInit = {
-    user: currentUser,
-    ship: ship,
-    org: org
-  };
-  app.value('$hullInit', HullInit);
-  angular.bootstrap(document, ['hull-instant']);
+  angular.bootstrap(element, ['hull-instant']);
 });
+
