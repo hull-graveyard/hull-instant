@@ -3,7 +3,6 @@ var _ = require('./util');
 var Steps = ['play', 'form', 'result'];
 
 function InstantWin(CurrentUser, Ship) {
-
   var CHANGE_EVENT = ["SHIP_CHANGE", Math.floor(Math.random() * 100000000000)].join('_');
 
   var AppState = {};
@@ -13,10 +12,10 @@ function InstantWin(CurrentUser, Ship) {
       ship: _.omit(ship, 'settings', 'resources', 'translations'),
       settings: ship.settings,
       form: ship.resources.form,
-      achievement: ship.resources.achievement,
+      achievement: ship.resources.instant_win,
       translations: ship.translations,
       user: user,
-      badge: (ship.resources.achievement && ship.resources.achievement.badge)
+      badge: (ship.resources.instant_win && ship.resources.instant_win.badge)
     };
     emitChange();
     return AppState;
@@ -26,7 +25,6 @@ function InstantWin(CurrentUser, Ship) {
     var s = getAppState(tmp);
     Hull.emit(CHANGE_EVENT, s);
   }
-
 
   // Customization support
 
@@ -64,7 +62,7 @@ function InstantWin(CurrentUser, Ship) {
   function submitForm(formData) {
     var data = processFormData(formData);
     emitChange({ changed: 'loading', loading: 'form' });
-    Hull.api.put(AppState.form.id + "/submit", { data: data }).then(function(form) {
+    Hull.api(AppState.form.id + "/submit", { data: data }, 'put').then(function(form) {
       AppState.form = form;
       emitChange({ changed: 'form' });
     }, function(err) {
@@ -75,7 +73,7 @@ function InstantWin(CurrentUser, Ship) {
   function play(provider) {
     if (userCanPlay()) {
       emitChange({ changed: 'loading', loading: 'badge' });
-      return Hull.api.post(AppState.achievement.id + "/achieve").then(function(badge) {
+      return Hull.api(AppState.achievement.id + "/achieve", 'post').then(function(badge) {
         AppState.badge = badge;
         emitChange({ changed: 'badge' });
       }, function(err) {
