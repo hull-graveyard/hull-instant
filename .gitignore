@@ -1,9 +1,0 @@
-tmp
-dist
-.DS_Store
-bower_components
-node_modules
-.env
-env.yml
-npm-debug.log
-
