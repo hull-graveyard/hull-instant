@@ -24,6 +24,10 @@ require('angular-translate');
 
 var app = angular.module('hull-instant', ['ngAnimate', 'schemaForm', 'angular-datepicker', 'pascalprecht.translate'])
 
+.config(['$sceProvider', function($sceProvider) {
+  $sceProvider.enabled(false);
+}])
+
 .config(["$translateProvider", function ($translateProvider) {
   $translateProvider.useLoader("$translateShipLoader");
   $translateProvider.preferredLanguage("en");
